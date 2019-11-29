@@ -17,9 +17,6 @@ while ($lucie->isAlive() && $anto->isAlive() && $ariane->isAlive()) {
         echo '<br>';
         echo "$anto->pseudo est KO ! ";
         break;
-    } else if (!$ariane->isAlive()){
-        echo'<br>';
-        echo "$ariane->pseudo est KO ! ";
     };
     echo '<br>';
 
@@ -32,34 +29,21 @@ while ($lucie->isAlive() && $anto->isAlive() && $ariane->isAlive()) {
             echo '<br>';
             echo "$lucie->pseudo est KO ! ";
             break;
-        }else if (!$ariane->isAlive()){
-            echo'<br>';
-            echo "$ariane->pseudo est KO ! ";
         };
     }
     echo'<br>';
-    
+
+    echo $ariane->action($lucie);
     if ($ariane->isAlive()){
-        if ($anto->isAlive()){
-            //3rd Character (Ariane) attacks a target
-            echo $ariane->action($anto);
-            // Check if target is alive
-            if (!$anto->isAlive()){
-                echo '<br>';
-                echo "$anto->pseudo est KO ! ";
-            };
-        } else if ($lucie->isAlive()){
-            //3rd Character (Ariane) attacks a target
-            echo $ariane->action($lucie);
-            // Check if target is alive
-            if (!$lucie->isAlive()){
-                echo '<br>';
-                echo "$lucie->pseudo est KO ! ";
-            }
-        } else {
-            echo "Ariane a transformé tout le monde en passoire !! ";
-        }
+        // 3rd Character (ariane) attaks 2nd Character (lucie)
+        $ariane->action($lucie);
+        // Check if target is alive
+        if (!$lucie->isAlive()) {
+            echo '<br>';
+            echo "$lucie->pseudo est KO ! ";
+            break;
+        };
     }
-    echo '<br>';
+    echo'<br>';
     echo '<br>';
 }
